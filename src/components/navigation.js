@@ -13,13 +13,6 @@ const Navigation = () => {
         <div className="collapse navbar-collapse px-lg-3" id="navbarCollapse">
             <div className="navbar-nav m-auto py-0">
                 <NavLink link={'/#home'} name={'Home'} />
-                {/* <a href="#home" className="nav-item nav-link active">Home</a>
-                <a href="#about" className="nav-item nav-link">About</a>
-                <a href="#qualification" className="nav-item nav-link">Quality</a>
-                <a href="#service" className="nav-item nav-link">Service</a>
-                <a href="#portfolio" className="nav-item nav-link">Portfolio</a>
-                <a href="#testimonial" className="nav-item nav-link">Review</a>
-                <a href="#contact" className="nav-item nav-link">Contact</a> */}
             </div>
             <a href="/#contact" className="btn btn-outline-primary d-none d-lg-block">Hire Me</a>
         </div>

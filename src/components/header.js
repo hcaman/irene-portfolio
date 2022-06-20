@@ -15,7 +15,6 @@ const Header = () => (
                     <h1 className="typed-text-output d-inline font-weight-lighter text-white"></h1>
                     <div className="typed-text d-none">Web Designer, Web Developer, Front End Developer, Apps Designer, Apps Developer</div>
                     <div className="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-                        {/* <a href="" className="btn btn-outline-light mr-5">Download CV</a> */}
                         <button type="button" className="btn-play" data-toggle="modal"
                             data-src="https://www.youtube.com/embed/1lyu1KKwC74" data-target="#videoModal">
                             <span></span>
