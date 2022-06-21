@@ -1,20 +1,9 @@
 import React from 'react';
-import { useStaticQuery, graphql } from "gatsby";
+import {useNavigationData} from '../hooks/useNavigationData';
 import { NavLink } from './ui/Links';
 
 const Navigation = () => {
-    const {allDatoCmsSectionsTitle} = useStaticQuery(graphql`
-        query {
-          allDatoCmsSectionsTitle {
-            nodes {
-              section
-              linkMenu
-              linkName
-              originalId
-            }
-          }
-        }
-    `);
+    const {allDatoCmsSectionsTitle} = useNavigationData();
     const navItems = allDatoCmsSectionsTitle.nodes.map((item, i) => {
         const {linkMenu, linkName, section, originalId} = item;
         const sectionName = JSON.parse(section)[0];

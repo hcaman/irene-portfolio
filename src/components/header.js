@@ -1,25 +1,9 @@
 import React from 'react';
-import { useStaticQuery, graphql } from "gatsby";
+import {useHeaderData} from '../hooks/useHeaderData';
 import { GatsbyImage } from "gatsby-plugin-image"
 
 const Header = () => {
-    const {datoCmsHome} = useStaticQuery(graphql`
-        query {
-            datoCmsHome {
-                skills
-                name
-                firstText
-                image {
-                    gatsbyImageData
-                    alt
-                    filename
-                }
-                linkVideo {
-                  value
-                }
-            }
-        }
-    `);
+    const {datoCmsHome} = useHeaderData();
     const {firstText, name, skills, image, linkVideo} = datoCmsHome;
     const urlVideo = linkVideo?.value?.document?.children[0]?.children[0]?.url;
     return (

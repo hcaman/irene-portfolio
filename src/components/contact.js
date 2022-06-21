@@ -1,24 +1,11 @@
 import React from 'react';
-import { useStaticQuery, graphql } from "gatsby";
+import {useContactData} from '../hooks/useContactData';
 import Titles from './ui/Titles';
 import { InputForm, TextForm } from './ui/InputsForm';
 import { HelpBlock } from './ui/Separators';
 
 const Contact = () => {
-    const {allDatoCmsSectionsTitle} = useStaticQuery(graphql`
-        query {
-            allDatoCmsSectionsTitle(filter: {section: {regex: "/contact/"}}) {
-                nodes {
-                    section
-                    linkMenu
-                    linkName
-                    littleTitle
-                    mainTitle
-                    originalId
-                }
-            }
-        }
-    `);
+    const {allDatoCmsSectionsTitle} = useContactData();
     const sectionOpst = { 
         sectionName: JSON.parse(allDatoCmsSectionsTitle.nodes[0]?.section)[0],
         mainTitle: allDatoCmsSectionsTitle.nodes[0]?.mainTitle || 'Contact',

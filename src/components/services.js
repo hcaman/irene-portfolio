@@ -1,31 +1,10 @@
 import React from 'react';
-import { useStaticQuery, graphql } from "gatsby";
+import {useServicesData} from '../hooks/useServicesData';
 import Titles from './ui/Titles';
 import ServiceItem from './ui/ServiceItem';
 
 const Services = () => {
-  const {allDatoCmsServiceItem, allDatoCmsSectionsTitle} = useStaticQuery(graphql`
-      query {
-        allDatoCmsServiceItem {
-          nodes {
-            icon
-            iconsize
-            description
-            title
-          }
-        }
-        allDatoCmsSectionsTitle(filter: {section: {regex: "/service/"}}) {
-            nodes {
-                section
-                linkMenu
-                linkName
-                littleTitle
-                mainTitle
-                originalId
-            }
-        }
-      }
-  `);
+  const {allDatoCmsServiceItem, allDatoCmsSectionsTitle} = useServicesData();
   const sectionOpst = { 
       sectionName: JSON.parse(allDatoCmsSectionsTitle.nodes[0]?.section)[0],
       mainTitle: allDatoCmsSectionsTitle.nodes[0]?.mainTitle || 'Services',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { GatsbyImage } from "gatsby-plugin-image"
+import {useAboutData} from '../hooks/useAboutData';
 import Titles from './ui/Titles';
-import { useStaticQuery, graphql } from "gatsby";
 
 const TextSecondary = ({item}) => {
     const label = item.split(':')[0];
@@ -10,32 +10,7 @@ const TextSecondary = ({item}) => {
 };
 
 const About = () => {
-    const {datoCmsAbout, allDatoCmsSectionsTitle} = useStaticQuery(graphql`
-        query {
-            datoCmsAbout {
-                description
-                mainTitle
-                littleTitle
-                itemsInformation
-                subtitle
-                image {
-                    gatsbyImageData
-                    alt
-                    filename
-                }
-            }
-            allDatoCmsSectionsTitle(filter: {section: {regex: "/about/"}}) {
-                nodes {
-                    section
-                    linkMenu
-                    linkName
-                    littleTitle
-                    mainTitle
-                    originalId
-                }
-            }
-        }
-    `);
+    const {datoCmsAbout, allDatoCmsSectionsTitle} = useAboutData();
     const {mainTitle, littleTitle, subtitle, itemsInformation, description, image} = datoCmsAbout;
     const itemsTextSec = itemsInformation.split(',\n');
     const sectionOpst = { 

@@ -1,35 +1,10 @@
 import React from 'react';
-import { useStaticQuery, graphql } from "gatsby";
+import {useTestimonialData} from '../hooks/useTestimonialData';
 import Titles from './ui/Titles';
 import ClientReview from './ui/ClientReview';
 
 const Testimonial = () => {
-    const {allDatoCmsTestimonial, allDatoCmsSectionsTitle} = useStaticQuery(graphql`
-        query {
-            allDatoCmsTestimonial {
-              nodes {
-                image {
-                  gatsbyImageData
-                  alt
-                  filename
-                }
-                name
-                review
-                profession
-              }
-            }
-            allDatoCmsSectionsTitle(filter: {section: {regex: "/testimonial/"}}) {
-                nodes {
-                    section
-                    linkMenu
-                    linkName
-                    littleTitle
-                    mainTitle
-                    originalId
-                }
-            }
-        }
-    `);
+    const {allDatoCmsTestimonial, allDatoCmsSectionsTitle} = useTestimonialData();
     const sectionOpst = { 
         sectionName: JSON.parse(allDatoCmsSectionsTitle.nodes[0]?.section)[0],
         mainTitle: allDatoCmsSectionsTitle.nodes[0]?.mainTitle || 'Review',

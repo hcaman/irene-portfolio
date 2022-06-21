@@ -1,21 +1,11 @@
 import React from 'react';
-import { useStaticQuery, graphql } from "gatsby";
-import { Separator } from './ui/Separators';
-import { LinkFooter, LinkFooterSocial } from './ui/Links';
+import {useFooterData} from '../hooks/useFooterData';
+import { LinkFooterSocial } from './ui/Links';
+// import { Separator } from './ui/Separators';
+// import { LinkFooter } from './ui/Links';
 
 const Footer = () => {
-  const {allDatoCmsFooterSocialLink} = useStaticQuery(graphql`
-      query {
-          allDatoCmsFooterSocialLink {
-            nodes {
-              icon
-              link {
-                value
-              }
-            }
-          }
-      }
-  `);
+  const {allDatoCmsFooterSocialLink} = useFooterData();
   const socialLinksElements = allDatoCmsFooterSocialLink.nodes.map((item, i) => {
     const {icon, link} = item;
     const socialLink = link?.value?.document?.children[0]?.children[0]?.url;

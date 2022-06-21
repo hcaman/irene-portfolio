@@ -8,22 +8,10 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import {useSeoData} from '../hooks/useSeoData';
 
-function Seo({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  )
+function Seo({ description, lang, meta, title, link }) {
+  const { site } = useSeoData();
 
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
@@ -69,6 +57,18 @@ function Seo({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
+      link={[
+        {
+          rel: `stylesheet`,
+          href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css",
+        }
+      ].concat(link)}
+      bodyAttributes={{
+        class: 'new-class-for-body',
+        dataspy:"scroll", 
+        datatarget:".navbar", 
+        dataoffset:"51"
+      }}
     />
   )
 }
@@ -77,6 +77,8 @@ Seo.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
+  link: [],
+  bodyAttributes: {},
 }
 
 Seo.propTypes = {
@@ -84,6 +86,8 @@ Seo.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
+  link: PropTypes.arrayOf(PropTypes.object),
+  bodyAttributes: PropTypes.object,
 }
 
 export default Seo
