@@ -13,8 +13,8 @@ import {useSeoData} from '../hooks/useSeoData';
 function Seo({ description, lang, meta, title, link }) {
   const { site } = useSeoData();
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const metaDescription = description || site.siteMetadata.description;
+  const defaultTitle = site.siteMetadata?.title;
 
   return (
     <Helmet
@@ -65,9 +65,9 @@ function Seo({ description, lang, meta, title, link }) {
       ].concat(link)}
       bodyAttributes={{
         class: 'new-class-for-body',
-        dataspy:"scroll", 
-        datatarget:".navbar", 
-        dataoffset:"51"
+        "data-spy": "scroll", 
+        "data-target": ".navbar", 
+        "data-offset": "51"
       }}
     />
   )
