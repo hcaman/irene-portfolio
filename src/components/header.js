@@ -9,6 +9,7 @@ const Header = () => {
   const urlVideo = linkVideo?.value?.document?.children[0]?.children[0]?.url
   const arrStringTyping = skills.split(', ')
   const titleTyping = useRef(null)
+  const handleClick = () => window.open(urlVideo, '_blank')
 
   useEffect(() => {
     const typed = new Typed(titleTyping.current, {
@@ -60,6 +61,7 @@ const Header = () => {
                   data-toggle="modal"
                   data-src={urlVideo}
                   data-target="#videoModal"
+                  onClick={handleClick}
                 >
                   <span></span>
                 </button>
