@@ -3,6 +3,16 @@ import { useStaticQuery, graphql } from 'gatsby'
 export const usePortfolioData = () => {
   const data = useStaticQuery(graphql`
     query {
+      allDatoCmsPortfolio {
+        nodes {
+          filter
+          image {
+            gatsbyImageData
+            alt
+            filename
+          }
+        }
+      }
       allDatoCmsSectionsTitle(filter: { section: { regex: "/portfolio/" } }) {
         nodes {
           section
