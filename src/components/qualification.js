@@ -13,16 +13,12 @@ const Qualification = () => {
     const educationCol = allDatoCmsQualificationItem.nodes.map((item, i) => {
         const {typeQualification, title, place, description, dateInit, dateEnd} = item;
         const period = `${dateInit} - ${dateEnd}`;
-        if (typeQualification) {
-            return (<QualItem key={i} title={title} company={place} period={period} desc={description} />);
-        }
+        return typeQualification && <QualItem key={i} title={title} company={place} period={period} desc={description} />
     });
     const experienceCol = allDatoCmsQualificationItem.nodes.map((item, i) => {
         const {typeQualification, title, place, description, dateInit, dateEnd} = item;
         const period = `${dateInit} - ${dateEnd}`;
-        if (!typeQualification) {
-            return (<QualItem key={i} title={title} company={place} period={period} desc={description} />);
-        }
+        return !typeQualification && <QualItem key={i} title={title} company={place} period={period} desc={description} />
     });
     return (
         <div className="container-fluid py-5" id={sectionOpst.sectionName}>

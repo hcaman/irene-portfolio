@@ -19,9 +19,7 @@ const Navigation = () => {
     const navItems = allDatoCmsSectionsTitle.nodes.map((item, i) => {
         const {linkMenu, linkName, section, originalId} = item;
         const sectionName = JSON.parse(section)[0];
-        if (linkMenu) {
-            return (<NavLink key={originalId || i} link={sectionName} name={linkName} />);
-        }
+        return linkMenu && <NavLink key={originalId || i} link={sectionName} name={linkName} />
     });
     return (
         <nav ref={navElement} onScroll={handleScroll} className="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
