@@ -1,4 +1,7 @@
 import React from 'react';
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 import {useTestimonialData} from '../hooks/useTestimonialData';
 import Titles from './ui/Titles';
 import ClientReview from './ui/ClientReview';
@@ -20,9 +23,11 @@ const Testimonial = () => {
                 <Titles mainTitle={sectionOpst.mainTitle} littleTitle={sectionOpst.littleTitle} />
                 <div className="row justify-content-center">
                     <div className="col-lg-8">
-                        <div className="owl-carousel testimonial-carousel">
+                        <OwlCarousel className="owl-carousel testimonial-carousel"
+                            loop items={1} smartSpeed={1500} dots autoplay
+                        >
                             {clientReviews}
-                        </div>
+                        </OwlCarousel>
                     </div>
                 </div>
             </div>

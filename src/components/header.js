@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import Typed from 'typed.js';
 import {useHeaderData} from '../hooks/useHeaderData';
 import { GatsbyImage } from "gatsby-plugin-image"
 
@@ -6,6 +7,24 @@ const Header = () => {
     const {datoCmsHome} = useHeaderData();
     const {firstText, name, skills, image, linkVideo} = datoCmsHome;
     const urlVideo = linkVideo?.value?.document?.children[0]?.children[0]?.url;
+    const arrStringTyping = skills.split(', ');
+    const titleTyping = useRef(null);
+
+    useEffect(() => {
+        const typed = new Typed(titleTyping.current, {
+            strings: arrStringTyping, // Strings to display
+            typeSpeed: 100,
+            backSpeed: 20,
+            smartBackspace: false,
+            loop: true
+        });
+
+        // Destropying
+        return () => {
+            typed.destroy();
+        };
+    }, [arrStringTyping]);
+
     return (
         <header>
             <div className="container-fluid bg-primary d-flex align-items-center mb-5 py-5" id="home" style={{minHeight: '100vh'}}>
@@ -17,8 +36,8 @@ const Header = () => {
                         <div className="col-lg-7 text-center text-lg-left">
                             <h3 className="text-white font-weight-normal mb-3">{firstText}</h3>
                             <h1 className="display-3 text-uppercase text-primary mb-2 text-stroke-2px">{name}</h1>
-                            <h1 className="typed-text-output d-inline font-weight-lighter text-white"></h1>
-                            <div className="typed-text d-none">{skills}</div>
+                            <h1 ref={titleTyping} className="typed-text-output d-inline font-weight-lighter text-white"> </h1>
+                            {/* <div className="typed-text d-none">{skills}</div> */}
                             <div className="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
                                 <button type="button" className="btn-play" data-toggle="modal"
                                     data-src={urlVideo} data-target="#videoModal">
