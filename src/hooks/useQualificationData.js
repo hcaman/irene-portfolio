@@ -1,29 +1,31 @@
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from 'gatsby'
 
 export const useQualificationData = () => {
-    const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
-        allDatoCmsQualificationItem {
-          nodes {
-            dateEnd(formatString: "YYYY")
-            dateInit(formatString: "YYYY")
-            description
-            place
-            title
-            typeQualification
-          }
+      allDatoCmsQualificationItem {
+        nodes {
+          dateEnd(formatString: "YYYY")
+          dateInit(formatString: "YYYY")
+          description
+          place
+          title
+          typeQualification
         }
-        allDatoCmsSectionsTitle(filter: {section: {regex: "/qualification/"}}) {
-            nodes {
-                section
-                linkMenu
-                linkName
-                littleTitle
-                mainTitle
-                originalId
-            }
+      }
+      allDatoCmsSectionsTitle(
+        filter: { section: { regex: "/qualification/" } }
+      ) {
+        nodes {
+          section
+          linkMenu
+          linkName
+          littleTitle
+          mainTitle
+          originalId
         }
+      }
     }
-`);
-    return data;
+  `)
+  return data
 }

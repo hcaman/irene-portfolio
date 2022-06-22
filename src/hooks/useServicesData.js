@@ -1,27 +1,27 @@
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from 'gatsby'
 
 export const useServicesData = () => {
-    const data = useStaticQuery(graphql`
-      query {
-        allDatoCmsServiceItem {
-          nodes {
-            icon
-            iconsize
-            description
-            title
-          }
-        }
-        allDatoCmsSectionsTitle(filter: {section: {regex: "/service/"}}) {
-            nodes {
-                section
-                linkMenu
-                linkName
-                littleTitle
-                mainTitle
-                originalId
-            }
+  const data = useStaticQuery(graphql`
+    query {
+      allDatoCmsServiceItem {
+        nodes {
+          icon
+          iconsize
+          description
+          title
         }
       }
-  `);
-    return data;
+      allDatoCmsSectionsTitle(filter: { section: { regex: "/service/" } }) {
+        nodes {
+          section
+          linkMenu
+          linkName
+          littleTitle
+          mainTitle
+          originalId
+        }
+      }
+    }
+  `)
+  return data
 }

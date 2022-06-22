@@ -1,18 +1,18 @@
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from 'gatsby'
 
 export const useSeoData = () => {
-    const data = useStaticQuery(
-        graphql`
-          query {
-            site {
-              siteMetadata {
-                title
-                description
-                author
-              }
-            }
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            description
+            author
           }
-        `
-    );
-    return data;
+        }
+      }
+    `
+  )
+  return data
 }

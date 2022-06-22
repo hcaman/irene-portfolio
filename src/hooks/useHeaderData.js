@@ -1,22 +1,22 @@
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from 'gatsby'
 
 export const useHeaderData = () => {
-    const data = useStaticQuery(graphql`
-        query {
-            datoCmsHome {
-                skills
-                name
-                firstText
-                image {
-                    gatsbyImageData
-                    alt
-                    filename
-                }
-                linkVideo {
-                    value
-                }
-            }
+  const data = useStaticQuery(graphql`
+    query {
+      datoCmsHome {
+        skills
+        name
+        firstText
+        image {
+          gatsbyImageData
+          alt
+          filename
         }
-    `);
-    return data;
+        linkVideo {
+          value
+        }
+      }
+    }
+  `)
+  return data
 }

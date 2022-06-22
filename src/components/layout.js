@@ -5,23 +5,23 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import * as React from "react"
-import PropTypes from "prop-types"
-import {useLayoutData} from '../hooks/useLayoutData';
+import * as React from 'react'
+import PropTypes from 'prop-types'
+import { useLayoutData } from '../hooks/useLayoutData'
 
-import Header from "./header"
-import Navigation from "./navigation"
-import Footer from "./footer"
-import "../scss/style.scss"
+import Header from './header'
+import Navigation from './navigation'
+import Footer from './footer'
+import '../scss/style.scss'
 
 const Layout = ({ children }) => {
-  const data = useLayoutData();
+  const data = useLayoutData()
 
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <Navigation />
-        {children}
+      {children}
       <Footer />
     </>
   )

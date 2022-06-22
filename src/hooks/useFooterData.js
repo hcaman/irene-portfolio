@@ -1,17 +1,17 @@
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from 'gatsby'
 
 export const useFooterData = () => {
-    const data = useStaticQuery(graphql`
-        query {
-            allDatoCmsFooterSocialLink {
-                nodes {
-                    icon
-                    link {
-                        value
-                    }
-                }
-            }
+  const data = useStaticQuery(graphql`
+    query {
+      allDatoCmsFooterSocialLink {
+        nodes {
+          icon
+          link {
+            value
+          }
         }
-    `);
-    return data;
+      }
+    }
+  `)
+  return data
 }
