@@ -15,13 +15,14 @@ function Seo({ description, lang, meta, title, link }) {
   
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = datoCmsSite.globalSeo.siteName || site.siteMetadata?.title
+  const mainTitle = title || datoCmsSite.globalSeo.siteName
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title || datoCmsSite.globalSeo.siteName}
+      title={mainTitle}
       titleTemplate={defaultTitle ? `%s / ${defaultTitle}` : null}
       meta={[
         {
@@ -30,7 +31,7 @@ function Seo({ description, lang, meta, title, link }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: mainTitle,
         },
         {
           property: `og:description`,
@@ -50,7 +51,7 @@ function Seo({ description, lang, meta, title, link }) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: mainTitle,
         },
         {
           name: `twitter:description`,

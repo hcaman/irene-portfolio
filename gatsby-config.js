@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -38,7 +40,7 @@ module.exports = {
       options: {
         // You can find your read-only API token under the Settings > API tokens
         // section of your administrative area. Make sure to grant both CDA and CMA permissions.
-        apiToken: `5aa1a1961438078913abcf73aeffc2`,
+        apiToken: process.env.DATOCMS_READ_TOKEN,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
