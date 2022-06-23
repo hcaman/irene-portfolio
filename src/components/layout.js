@@ -16,13 +16,14 @@ import '../scss/style.scss'
 
 const Layout = ({ children }) => {
   const data = useLayoutData()
-
+  const titlePage = data.datoCmsSite.globalSeo?.siteName || data.site.siteMetadata?.title
+  
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <Header siteTitle={ titlePage || `Title`} />
       <Navigation />
       {children}
-      <Footer />
+      <Footer siteTitle={ titlePage || `Title`} />
     </>
   )
 }

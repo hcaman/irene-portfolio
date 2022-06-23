@@ -11,17 +11,17 @@ import { Helmet } from 'react-helmet'
 import { useSeoData } from '../hooks/useSeoData'
 
 function Seo({ description, lang, meta, title, link }) {
-  const { site } = useSeoData()
-
+  const { site, datoCmsSite } = useSeoData()
+  
   const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const defaultTitle = datoCmsSite.globalSeo.siteName || site.siteMetadata?.title
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={title || datoCmsSite.globalSeo.siteName}
       titleTemplate={defaultTitle ? `%s / ${defaultTitle}` : null}
       meta={[
         {
