@@ -4,8 +4,8 @@ import { LinkFooterSocial } from './ui/Links'
 // import { Separator } from './ui/Separators';
 // import { LinkFooter } from './ui/Links';
 
-const Footer = () => {
-  const domainName = window.location.hostname.replace('www.', '');
+const Footer = ({ siteTitle }) => {
+  const domainName = window.location.hostname.replace('www.', '')
   const { allDatoCmsFooterSocialLink } = useFooterData()
   const socialLinksElements = allDatoCmsFooterSocialLink.nodes.map(
     (item, i) => {
@@ -29,7 +29,7 @@ const Footer = () => {
                 <Separator />
             </div> */}
         <p className="m-0">
-          &copy; <a className="text-white font-weight-bold" href="/#">{domainName}</a>
+          &copy; <a className="text-white font-weight-bold" href="/">{domainName}</a>
           . All Rights Reserved. Designed by 
           <a className="text-white font-weight-bold" href="https://htmlcodex.com"> HTML Codex</a>
         </p>
