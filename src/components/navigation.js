@@ -3,10 +3,12 @@ import { useNavigationData } from '../hooks/useNavigationData'
 import { NavLink } from './ui/Links'
 
 const Navigation = () => {
-  const { allDatoCmsSectionsTitle } = useNavigationData()
+  const { datoCmsNavigation, allDatoCmsSectionsTitle } = useNavigationData()
+  const { name, lastname, buttonText } = datoCmsNavigation
   const navElement = useRef()
   const handleScroll = event => {
-    navElement.current.style.display = window.scrollY > 200 ? 'flex' : 'none'
+    const showMenu =  window.scrollY > 200;
+    navElement.current.style.display = showMenu ? 'flex' : 'none'
   }
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
@@ -33,7 +35,7 @@ const Navigation = () => {
     >
       <a href="/#" className="navbar-brand ml-lg-3">
         <h1 className="m-0 display-5">
-          <span className="text-primary">Free</span>Folio
+          <span className="text-primary">{name}</span>{lastname}
         </h1>
       </a>
       <button
@@ -50,7 +52,7 @@ const Navigation = () => {
           href="/#contact"
           className="btn btn-outline-primary d-none d-lg-block"
         >
-          Hire Me
+          {buttonText}
         </a>
       </div>
     </nav>
