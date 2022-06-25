@@ -4,14 +4,15 @@ import { useHeaderData } from '../hooks/useHeaderData'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 const Header = () => {
+  const isBrowser = typeof window !== "undefined"
   const { datoCmsHome } = useHeaderData()
   const { firstText, name, skills, image, linkVideo } = datoCmsHome
   const urlVideo = linkVideo?.value?.document?.children[0]?.children[0]?.url
-  const arrStringTyping = skills.split(', ')
   const titleTyping = useRef(null)
-  const handleClick = () => window.open(urlVideo, '_blank')
+  const handleClick = () => isBrowser && window.open(urlVideo, '_blank')
 
   useEffect(() => {
+    const arrStringTyping = skills.split(', ')
     const typed = new Typed(titleTyping.current, {
       strings: arrStringTyping, // Strings to display
       typeSpeed: 100,
@@ -24,7 +25,7 @@ const Header = () => {
     return () => {
       typed.destroy()
     }
-  }, [arrStringTyping])
+  }, [skills])
 
   return (
     <header>

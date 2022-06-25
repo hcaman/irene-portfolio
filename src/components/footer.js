@@ -1,11 +1,13 @@
 import React from 'react'
+import { Link } from "gatsby"
 import { useFooterData } from '../hooks/useFooterData'
 import { LinkFooterSocial } from './ui/Links'
 // import { Separator } from './ui/Separators';
 // import { LinkFooter } from './ui/Links';
 
 const Footer = ({ siteTitle }) => {
-  const domainName = window.location.hostname.replace('www.', '')
+  const isBrowser = typeof window !== "undefined"
+  const domainName = isBrowser && window.location.hostname.replace('www.', '')
   const { allDatoCmsFooterSocialLink } = useFooterData()
   const socialLinksElements = allDatoCmsFooterSocialLink.nodes.map(
     (item, i) => {
@@ -29,7 +31,7 @@ const Footer = ({ siteTitle }) => {
                 <Separator />
             </div> */}
         <p className="m-0">
-          &copy; <a className="text-white font-weight-bold" href="/">{domainName}</a>
+          &copy; <Link className="text-white font-weight-bold" to="/">{domainName}</Link>
           . All Rights Reserved. Designed by 
           <a className="text-white font-weight-bold" href="https://htmlcodex.com"> HTML Codex</a>
         </p>

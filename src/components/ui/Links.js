@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from "gatsby"
 
 export const LinkFooter = ({ name, link }) => (
-  <a className="text-white" href={link}>
+  <Link className="text-white" to={link}>
     {name}
-  </a>
+  </Link>
 )
 
 export const LinkFooterSocial = ({ icon, link, last }) => (
@@ -12,13 +13,16 @@ export const LinkFooterSocial = ({ icon, link, last }) => (
   </a>
 )
 
-export const NavLink = ({ link, name }) => (
-  <a
-    href={`/#${link}`}
-    className={`nav-item nav-link ${
-      window.location.hash.replace('#', '') === link ? 'active' : ''
-    }`}
-  >
-    {name}
-  </a>
-)
+export const NavLink = ({ link, name }) => {
+  const isBrowser = typeof window !== "undefined"
+  const hashUrl = isBrowser && window.location.hash.replace('#', '');
+  return (
+    <Link
+      to={`/#${link}`}
+      className={`nav-item nav-link ${
+        hashUrl === link ? 'active' : ''
+      }`}
+    >
+      {name}
+    </Link>
+)}

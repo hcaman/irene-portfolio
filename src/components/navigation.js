@@ -1,22 +1,24 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useCallback } from 'react'
+import { Link } from "gatsby"
 import { useNavigationData } from '../hooks/useNavigationData'
 import { NavLink } from './ui/Links'
 
 const Navigation = () => {
+  const isBrowser = typeof window !== "undefined"
   const { datoCmsNavigation, allDatoCmsSectionsTitle } = useNavigationData()
   const { name, lastname, buttonText } = datoCmsNavigation
   const navElement = useRef()
-  const handleScroll = event => {
-    const showMenu =  window.scrollY > 200;
+  const handleScroll = useCallback(() => {
+    const showMenu =  isBrowser && window.scrollY > 200;
     navElement.current.style.display = showMenu ? 'flex' : 'none'
-  }
+  }, [isBrowser])
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
+    isBrowser && window.addEventListener('scroll', handleScroll)
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      isBrowser && window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [isBrowser, handleScroll])
 
   const navItems = allDatoCmsSectionsTitle.nodes.map((item, i) => {
     const { linkMenu, linkName, section, originalId } = item
@@ -33,11 +35,11 @@ const Navigation = () => {
       onScroll={handleScroll}
       className="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5"
     >
-      <a href="/#" className="navbar-brand ml-lg-3">
+      <Link to="/#" className="navbar-brand ml-lg-3">
         <h1 className="m-0 display-5">
           <span className="text-primary">{name}</span>{lastname}
         </h1>
-      </a>
+      </Link>
       <button
         type="button"
         className="navbar-toggler"

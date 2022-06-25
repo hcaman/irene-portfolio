@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "gatsby"
 import { useNotFound } from '../hooks/useNotFound'
 
 const NotFound = () => {
@@ -10,7 +11,7 @@ const NotFound = () => {
             <h1 className="display-1 fw-bold">404</h1>
             <p className="fs-3"> <span className="text-danger">{redText}</span> {subtitle}</p>
             <p className="lead">{message}</p>
-            <a href="/" className="btn btn-primary">{buttonText}</a>
+            <Link to="/" className="btn btn-primary">{buttonText}</Link>
         </div>
     </div>
   );
