@@ -1,7 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image'
+import OwlCarousel from 'react-owl-carousel'
+import 'owl.carousel/dist/assets/owl.carousel.css'
+import 'owl.carousel/dist/assets/owl.theme.default.css'
 
-const ClientReview = ({ name, profession, review, image }) => (
+export const ClientReview = ({ name, profession, review, image }) => (
   <div className="text-center item">
     <i className="fa fa-3x fa-quote-left text-primary mb-4"></i>
     <h4 className="font-weight-light mb-4">{review}</h4>
@@ -16,4 +19,15 @@ const ClientReview = ({ name, profession, review, image }) => (
   </div>
 )
 
-export default ClientReview
+export const Carousel = ({clientReviews}) => (
+  <OwlCarousel
+    className="owl-carousel testimonial-carousel"
+    loop
+    items={1}
+    smartSpeed={1500}
+    dots
+    autoplay
+  >
+    {clientReviews}
+  </OwlCarousel>
+)

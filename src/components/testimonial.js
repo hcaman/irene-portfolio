@@ -1,10 +1,7 @@
-import React from 'react'
-import OwlCarousel from 'react-owl-carousel'
-import 'owl.carousel/dist/assets/owl.carousel.css'
-import 'owl.carousel/dist/assets/owl.theme.default.css'
+import React from 'react';
 import { useTestimonialData } from '../hooks/useTestimonialData'
 import Titles from './ui/Titles'
-import ClientReview from './ui/ClientReview'
+import { ClientReview, Carousel } from './ui/ClientReview'
 
 const Testimonial = () => {
   const { allDatoCmsTestimonial, allDatoCmsSectionsTitle } =
@@ -35,16 +32,7 @@ const Testimonial = () => {
         />
         <div className="row justify-content-center">
           <div className="col-lg-8">
-            <OwlCarousel
-              className="owl-carousel testimonial-carousel"
-              loop
-              items={1}
-              smartSpeed={1500}
-              dots
-              autoplay
-            >
-              {clientReviews}
-            </OwlCarousel>
+            <Carousel clientReviews={clientReviews} />
           </div>
         </div>
       </div>
