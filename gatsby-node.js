@@ -7,6 +7,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
             test: /react-owl-carousel/,
             use: loaders.null(),
           },
+          {
+            test: /typed.js/,
+            use: loaders.null(),
+          },
         ],
       },
     })
