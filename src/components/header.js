@@ -1,29 +1,31 @@
 import React, { useEffect, useRef } from 'react'
-import Typed from 'typed.js'
+import { default as TypedLib } from 'typed.js';
 import { useHeaderData } from '../hooks/useHeaderData'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 const Header = () => {
-  const isBrowser = typeof window !== "undefined"
+  const isBrowser = typeof window !== 'undefined'
   const { datoCmsHome } = useHeaderData()
   const { firstText, name, skills, image, linkVideo } = datoCmsHome
   const urlVideo = linkVideo?.value?.document?.children[0]?.children[0]?.url
   const titleTyping = useRef(null)
+  const typed = useRef(null)
   const handleClick = () => isBrowser && window.open(urlVideo, '_blank')
 
   useEffect(() => {
     const arrStringTyping = skills.split(', ')
-    const typed = new Typed(titleTyping.current, {
+    const typedOpts = {
       strings: arrStringTyping, // Strings to display
       typeSpeed: 100,
       backSpeed: 20,
       smartBackspace: false,
       loop: true,
-    })
+    }
+    typed.current = new TypedLib(titleTyping.current, typedOpts)
 
     // Destropying
     return () => {
-      typed.destroy()
+      typed.current.destroy()
     }
   }, [skills])
 
