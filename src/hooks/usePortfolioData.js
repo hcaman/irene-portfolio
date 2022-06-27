@@ -6,6 +6,7 @@ export const usePortfolioData = () => {
       allDatoCmsPortfolio {
         nodes {
           filter
+          id
           image {
             gatsbyImageData
             alt

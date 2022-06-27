@@ -11,11 +11,11 @@ const Footer = ({ siteTitle }) => {
   const { allDatoCmsFooterSocialLink } = useFooterData()
   const socialLinksElements = allDatoCmsFooterSocialLink.nodes.map(
     (item, i) => {
-      const { icon, link } = item
+      const { icon, link, id } = item
       const socialLink = link?.value?.document?.children[0]?.children[0]?.url
       const isLast = i === allDatoCmsFooterSocialLink.nodes.length - 1
       return (
-        <LinkFooterSocial key={i} icon={icon} link={socialLink} last={isLast} />
+        <LinkFooterSocial key={id || i} icon={icon} link={socialLink} last={isLast} />
       )
     }
   )

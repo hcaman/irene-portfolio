@@ -11,11 +11,11 @@ const Services = () => {
     littleTitle: allDatoCmsSectionsTitle.nodes[0]?.littleTitle || 'My Services',
   }
   const seviceItems = allDatoCmsServiceItem.nodes.map((item, i) => {
-    const { title, icon, description, iconsize } = item
+    const { title, icon, description, iconsize, id } = item
     const link = item?.link
     return (
       <ServiceItem
-        key={i}
+        key={id || i}
         title={title}
         icon={icon}
         iconSize={iconsize}

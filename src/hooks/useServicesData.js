@@ -9,6 +9,7 @@ export const useServicesData = () => {
           iconsize
           description
           title
+          id
         }
       }
       allDatoCmsSectionsTitle(filter: { section: { regex: "/service/" } }) {

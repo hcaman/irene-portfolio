@@ -14,35 +14,35 @@ const Qualification = () => {
       'Education & Expericence',
   }
   const educationCol = allDatoCmsQualificationItem.nodes.map((item, i) => {
-    const { typeQualification, title, place, description, dateInit, dateEnd } =
+    const { typeQualification, title, place, description, dateInit, dateEnd, id } =
       item
     const period = `${dateInit} - ${dateEnd}`
     return (
-      typeQualification && (
+      typeQualification ? (
         <QualItem
-          key={i}
+          key={id || i}
           title={title}
           company={place}
           period={period}
           desc={description}
         />
-      )
+      ) : null
     )
   })
   const experienceCol = allDatoCmsQualificationItem.nodes.map((item, i) => {
-    const { typeQualification, title, place, description, dateInit, dateEnd } =
+    const { typeQualification, title, place, description, dateInit, dateEnd, id } =
       item
     const period = `${dateInit} - ${dateEnd}`
     return (
-      !typeQualification && (
+      !typeQualification ? (
         <QualItem
-          key={i}
+          key={id || i}
           title={title}
           company={place}
           period={period}
           desc={description}
         />
-      )
+      ) : null
     )
   })
   return (

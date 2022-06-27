@@ -21,12 +21,12 @@ const Navigation = () => {
   }, [isBrowser, handleScroll])
 
   const navItems = allDatoCmsSectionsTitle.nodes.map((item, i) => {
-    const { linkMenu, linkName, section, originalId } = item
+    const { linkMenu, linkName, section, id } = item
     const sectionName = JSON.parse(section)[0]
     return (
-      linkMenu && (
-        <NavLink key={originalId || i} link={sectionName} name={linkName} />
-      )
+      linkMenu ? (
+        <NavLink key={id || i} link={sectionName} name={linkName} />
+      ) : null
     )
   })
   return (

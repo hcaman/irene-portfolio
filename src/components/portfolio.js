@@ -9,10 +9,10 @@ const Portfolio = () => {
   const { allDatoCmsPortfolio, allDatoCmsSectionsTitle } = usePortfolioData()
   const allFilters = [];
   const portfolioElements = allDatoCmsPortfolio.nodes.map((item, i) => {
-    const { image, filter } = item
+    const { image, filter, id } = item
     allFilters.push(filter);
     return (
-      <ProtfolioBox key={i} image={image} filterName={filter} />
+      <ProtfolioBox key={id || i} image={image} filterName={filter} />
     )
   })
   const sectionOpst = {

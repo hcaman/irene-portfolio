@@ -13,6 +13,7 @@ export const useNavigationData = () => {
           section
           linkMenu
           linkName
+          id
           originalId
         }
       }

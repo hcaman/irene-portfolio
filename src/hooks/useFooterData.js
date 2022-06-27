@@ -6,6 +6,7 @@ export const useFooterData = () => {
       allDatoCmsFooterSocialLink {
         nodes {
           icon
+          id
           link {
             value
           }

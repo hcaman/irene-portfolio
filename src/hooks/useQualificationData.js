@@ -11,6 +11,8 @@ export const useQualificationData = () => {
           place
           title
           typeQualification
+          id
+          originalId
         }
       }
       allDatoCmsSectionsTitle(
@@ -22,6 +24,7 @@ export const useQualificationData = () => {
           linkName
           littleTitle
           mainTitle
+          id
           originalId
         }
       }
