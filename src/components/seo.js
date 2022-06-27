@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { useSeoData } from '../hooks/useSeoData'
 
-function Seo({ description, lang, meta, title, link }) {
+function Seo({ description, lang, meta, title }) {
   const { site, datoCmsSite } = useSeoData()
   
   const metaDescription = description || site.siteMetadata.description
@@ -58,12 +58,6 @@ function Seo({ description, lang, meta, title, link }) {
           content: metaDescription,
         },
       ].concat(meta)}
-      link={[
-        {
-          rel: `stylesheet`,
-          href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css',
-        },
-      ].concat(link)}
       bodyAttributes={{
         class: 'new-class-for-body',
         'data-spy': 'scroll',
@@ -78,7 +72,6 @@ Seo.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-  link: [],
   bodyAttributes: {},
 }
 
@@ -87,7 +80,6 @@ Seo.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
-  link: PropTypes.arrayOf(PropTypes.object),
   bodyAttributes: PropTypes.object,
 }
 
