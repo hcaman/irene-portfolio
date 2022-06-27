@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export const TextForm = ({ opts }) =>
   opts.required ? (
@@ -17,7 +17,7 @@ export const TextForm = ({ opts }) =>
       id={opts.idform}
       placeholder={opts.placeholder}
     ></textarea>
-  )
+  );
 
 export const InputForm = ({ opts }) =>
   opts.required ? (
@@ -36,4 +36,4 @@ export const InputForm = ({ opts }) =>
       id={opts.idform}
       placeholder={opts.placeholder}
     />
-  )
+  );

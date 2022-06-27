@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby';
 
 export const useTestimonialData = () => {
   const data = useStaticQuery(graphql`
@@ -26,6 +26,6 @@ export const useTestimonialData = () => {
         }
       }
     }
-  `)
-  return data
-}
+  `);
+  return data;
+};

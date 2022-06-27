@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby';
 
 export const useNotFound = () => {
   const data = useStaticQuery(graphql`
@@ -10,6 +10,6 @@ export const useNotFound = () => {
         message
       }
     }
-  `)
-  return data
-}
+  `);
+  return data;
+};

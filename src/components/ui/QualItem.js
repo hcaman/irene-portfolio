@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const QualItem = ({ title, company, period, desc = '' }) => (
   <div className="position-relative mb-4">
@@ -12,6 +12,6 @@ const QualItem = ({ title, company, period, desc = '' }) => (
     </p>
     {desc && <p>{desc}</p>}
   </div>
-)
+);
 
-export default QualItem
+export default QualItem;

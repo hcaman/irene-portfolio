@@ -5,17 +5,18 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import * as React from 'react'
-import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
-import { useSeoData } from '../hooks/useSeoData'
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
+import { useSeoData } from '../hooks/useSeoData';
 
 function Seo({ description, lang, meta, title }) {
-  const { site, datoCmsSite } = useSeoData()
-  
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = datoCmsSite.globalSeo.siteName || site.siteMetadata?.title
-  const mainTitle = title || datoCmsSite.globalSeo.siteName
+  const { site, datoCmsSite } = useSeoData();
+
+  const metaDescription = description || site.siteMetadata.description;
+  const defaultTitle =
+    datoCmsSite.globalSeo.siteName || site.siteMetadata?.title;
+  const mainTitle = title || datoCmsSite.globalSeo.siteName;
 
   return (
     <Helmet
@@ -65,7 +66,7 @@ function Seo({ description, lang, meta, title }) {
         'data-offset': '51',
       }}
     />
-  )
+  );
 }
 
 Seo.defaultProps = {
@@ -73,7 +74,7 @@ Seo.defaultProps = {
   meta: [],
   description: ``,
   bodyAttributes: {},
-}
+};
 
 Seo.propTypes = {
   description: PropTypes.string,
@@ -81,6 +82,6 @@ Seo.propTypes = {
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
   bodyAttributes: PropTypes.object,
-}
+};
 
-export default Seo
+export default Seo;

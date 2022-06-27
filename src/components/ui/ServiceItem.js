@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const ServiceItem = ({
   title,
@@ -24,6 +24,6 @@ const ServiceItem = ({
       </a>
     )}
   </div>
-)
+);
 
-export default ServiceItem
+export default ServiceItem;

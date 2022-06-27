@@ -1,22 +1,22 @@
-import React from 'react'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import { useAboutData } from '../hooks/useAboutData'
-import Titles from './ui/Titles'
+import React from 'react';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { useAboutData } from '../hooks/useAboutData';
+import Titles from './ui/Titles';
 
 const TextSecondary = ({ item }) => {
-  const label = item.split(':')[0]
-  const text = item.split(':')[1]
+  const label = item.split(':')[0];
+  const text = item.split(':')[1];
   return (
     <div className="col-sm-6 py-2">
       <h6>
         {label}: <span className="text-secondary">{text}</span>
       </h6>
     </div>
-  )
-}
+  );
+};
 
 const About = () => {
-  const { datoCmsAbout, allDatoCmsSectionsTitle } = useAboutData()
+  const { datoCmsAbout, allDatoCmsSectionsTitle } = useAboutData();
   const {
     mainTitle,
     littleTitle,
@@ -24,8 +24,8 @@ const About = () => {
     itemsInformation,
     description,
     image,
-  } = datoCmsAbout
-  const itemsTextSec = itemsInformation.split(',\n')
+  } = datoCmsAbout;
+  const itemsTextSec = itemsInformation.split(',\n');
   const sectionOpst = {
     sectionName: JSON.parse(allDatoCmsSectionsTitle.nodes[0]?.section)[0],
     mainTitle:
@@ -34,7 +34,7 @@ const About = () => {
       allDatoCmsSectionsTitle.nodes[0]?.littleTitle ||
       littleTitle ||
       'About Me',
-  }
+  };
   return (
     <div className="container-fluid py-5" id={sectionOpst.sectionName}>
       <div className="container">
@@ -68,7 +68,7 @@ const About = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

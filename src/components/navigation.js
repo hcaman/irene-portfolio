@@ -1,34 +1,32 @@
-import React, { useEffect, useRef, useCallback } from 'react'
-import { Link } from "gatsby"
-import { useNavigationData } from '../hooks/useNavigationData'
-import { NavLink } from './ui/Links'
+import React, { useEffect, useRef, useCallback } from 'react';
+import { Link } from 'gatsby';
+import { useNavigationData } from '../hooks/useNavigationData';
+import { NavLink } from './ui/Links';
 
 const Navigation = () => {
-  const isBrowser = typeof window !== "undefined"
-  const { datoCmsNavigation, allDatoCmsSectionsTitle } = useNavigationData()
-  const { name, lastname, buttonText } = datoCmsNavigation
-  const navElement = useRef()
+  const isBrowser = typeof window !== 'undefined';
+  const { datoCmsNavigation, allDatoCmsSectionsTitle } = useNavigationData();
+  const { name, lastname, buttonText } = datoCmsNavigation;
+  const navElement = useRef();
   const handleScroll = useCallback(() => {
-    const showMenu =  isBrowser && window.scrollY > 200;
-    navElement.current.style.display = showMenu ? 'flex' : 'none'
-  }, [isBrowser])
+    const showMenu = isBrowser && window.scrollY > 200;
+    navElement.current.style.display = showMenu ? 'flex' : 'none';
+  }, [isBrowser]);
   useEffect(() => {
-    isBrowser && window.addEventListener('scroll', handleScroll)
+    isBrowser && window.addEventListener('scroll', handleScroll);
 
     return () => {
-      isBrowser && window.removeEventListener('scroll', handleScroll)
-    }
-  }, [isBrowser, handleScroll])
+      isBrowser && window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isBrowser, handleScroll]);
 
   const navItems = allDatoCmsSectionsTitle.nodes.map((item, i) => {
-    const { linkMenu, linkName, section, id } = item
-    const sectionName = JSON.parse(section)[0]
-    return (
-      linkMenu ? (
-        <NavLink key={id || i} link={sectionName} name={linkName} />
-      ) : null
-    )
-  })
+    const { linkMenu, linkName, section, id } = item;
+    const sectionName = JSON.parse(section)[0];
+    return linkMenu ? (
+      <NavLink key={id || i} link={sectionName} name={linkName} />
+    ) : null;
+  });
   return (
     <nav
       ref={navElement}
@@ -37,7 +35,8 @@ const Navigation = () => {
     >
       <Link to="/#" className="navbar-brand ml-lg-3">
         <h1 className="m-0 display-5">
-          <span className="text-primary">{name}</span>{lastname}
+          <span className="text-primary">{name}</span>
+          {lastname}
         </h1>
       </Link>
       <button
@@ -58,7 +57,7 @@ const Navigation = () => {
         </a>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;

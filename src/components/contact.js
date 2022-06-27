@@ -1,16 +1,16 @@
-import React from 'react'
-import { useContactData } from '../hooks/useContactData'
-import Titles from './ui/Titles'
-import { InputForm, TextForm } from './ui/InputsForm'
-import { HelpBlock } from './ui/Separators'
+import React from 'react';
+import { useContactData } from '../hooks/useContactData';
+import Titles from './ui/Titles';
+import { InputForm, TextForm } from './ui/InputsForm';
+import { HelpBlock } from './ui/Separators';
 
 const Contact = () => {
-  const { allDatoCmsSectionsTitle } = useContactData()
+  const { allDatoCmsSectionsTitle } = useContactData();
   const sectionOpst = {
     sectionName: JSON.parse(allDatoCmsSectionsTitle.nodes[0]?.section)[0],
     mainTitle: allDatoCmsSectionsTitle.nodes[0]?.mainTitle || 'Contact',
     littleTitle: allDatoCmsSectionsTitle.nodes[0]?.littleTitle || 'Contact Me',
-  }
+  };
   return (
     <div className="container-fluid py-5" id={sectionOpst.sectionName}>
       <div className="container">
@@ -56,10 +56,10 @@ const Contact = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
 
 const formOpts = {
   name: {
@@ -90,4 +90,4 @@ const formOpts = {
     placeholder: 'Message',
     validationmsg: 'Please enter your message',
   },
-}
+};

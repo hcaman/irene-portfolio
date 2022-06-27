@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby';
 
 export const useSeoData = () => {
   const data = useStaticQuery(
@@ -23,6 +23,6 @@ export const useSeoData = () => {
         }
       }
     `
-  )
-  return data
-}
+  );
+  return data;
+};

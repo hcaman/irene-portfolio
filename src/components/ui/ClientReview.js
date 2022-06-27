@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { GatsbyImage } from 'gatsby-plugin-image'
-import OwlCarousel from 'react-owl-carousel'
-import 'owl.carousel/dist/assets/owl.carousel.css'
-import 'owl.carousel/dist/assets/owl.theme.default.css'
+import { GatsbyImage } from 'gatsby-plugin-image';
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 export const ClientReview = ({ name, profession, review, image }) => (
   <div className="text-center item">
@@ -17,13 +17,13 @@ export const ClientReview = ({ name, profession, review, image }) => (
     <h5 className="font-weight-bold m-0">{name}</h5>
     <span>{profession}</span>
   </div>
-)
+);
 
-export const Carousel = ({clientNodes}) => {
-  const [carousel, setCarousel] = useState(<></>)
+export const Carousel = ({ clientNodes }) => {
+  const [carousel, setCarousel] = useState(<></>);
   useEffect(() => {
     const clientReviewsElement = clientNodes.map((item, i) => {
-      const { name, review, profession, image } = item
+      const { name, review, profession, image } = item;
       return (
         <ClientReview
           key={i}
@@ -32,8 +32,8 @@ export const Carousel = ({clientNodes}) => {
           review={review}
           image={image}
         />
-      )
-    })
+      );
+    });
     const carouselElement = (
       <OwlCarousel
         className="owl-carousel testimonial-carousel"
@@ -45,9 +45,9 @@ export const Carousel = ({clientNodes}) => {
       >
         {clientReviewsElement}
       </OwlCarousel>
-    )
-    setCarousel(carouselElement)
-  }, [clientNodes])
+    );
+    setCarousel(carouselElement);
+  }, [clientNodes]);
 
-  return carousel
-}
+  return carousel;
+};

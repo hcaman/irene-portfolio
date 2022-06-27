@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby';
 
 export const useNavigationData = () => {
   const data = useStaticQuery(graphql`
@@ -18,6 +18,6 @@ export const useNavigationData = () => {
         }
       }
     }
-  `)
-  return data
-}
+  `);
+  return data;
+};

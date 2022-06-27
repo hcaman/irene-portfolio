@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby';
 
 export const useHeaderData = () => {
   const data = useStaticQuery(graphql`
@@ -17,6 +17,6 @@ export const useHeaderData = () => {
         }
       }
     }
-  `)
-  return data
-}
+  `);
+  return data;
+};

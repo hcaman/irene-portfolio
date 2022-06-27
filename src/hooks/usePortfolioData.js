@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby';
 
 export const usePortfolioData = () => {
   const data = useStaticQuery(graphql`
@@ -25,6 +25,6 @@ export const usePortfolioData = () => {
         }
       }
     }
-  `)
-  return data
-}
+  `);
+  return data;
+};

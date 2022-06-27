@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Titles = ({ mainTitle, littleTitle = '' }) => {
   return (
@@ -10,7 +10,7 @@ const Titles = ({ mainTitle, littleTitle = '' }) => {
         {littleTitle || mainTitle}
       </h1>
     </div>
-  )
-}
+  );
+};
 
-export default Titles
+export default Titles;

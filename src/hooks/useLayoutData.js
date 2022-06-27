@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby';
 
 export const useLayoutData = () => {
   const data = useStaticQuery(graphql`
@@ -19,6 +19,6 @@ export const useLayoutData = () => {
         }
       }
     }
-  `)
-  return data
-}
+  `);
+  return data;
+};

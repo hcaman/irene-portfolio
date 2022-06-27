@@ -1,50 +1,60 @@
-import React from 'react'
-import { useQualificationData } from '../hooks/useQualificationData'
-import Titles from './ui/Titles'
-import QualItem from './ui/QualItem'
+import React from 'react';
+import { useQualificationData } from '../hooks/useQualificationData';
+import Titles from './ui/Titles';
+import QualItem from './ui/QualItem';
 
 const Qualification = () => {
   const { allDatoCmsQualificationItem, allDatoCmsSectionsTitle } =
-    useQualificationData()
+    useQualificationData();
   const sectionOpst = {
     sectionName: JSON.parse(allDatoCmsSectionsTitle.nodes[0]?.section)[0],
     mainTitle: allDatoCmsSectionsTitle.nodes[0]?.mainTitle || 'Quality',
     littleTitle:
       allDatoCmsSectionsTitle.nodes[0]?.littleTitle ||
       'Education & Expericence',
-  }
+  };
   const educationCol = allDatoCmsQualificationItem.nodes.map((item, i) => {
-    const { typeQualification, title, place, description, dateInit, dateEnd, id } =
-      item
-    const period = `${dateInit} - ${dateEnd}`
-    return (
-      typeQualification ? (
-        <QualItem
-          key={id || i}
-          title={title}
-          company={place}
-          period={period}
-          desc={description}
-        />
-      ) : null
-    )
-  })
+    const {
+      typeQualification,
+      title,
+      place,
+      description,
+      dateInit,
+      dateEnd,
+      id,
+    } = item;
+    const period = `${dateInit} - ${dateEnd}`;
+    return typeQualification ? (
+      <QualItem
+        key={id || i}
+        title={title}
+        company={place}
+        period={period}
+        desc={description}
+      />
+    ) : null;
+  });
   const experienceCol = allDatoCmsQualificationItem.nodes.map((item, i) => {
-    const { typeQualification, title, place, description, dateInit, dateEnd, id } =
-      item
-    const period = `${dateInit} - ${dateEnd}`
-    return (
-      !typeQualification ? (
-        <QualItem
-          key={id || i}
-          title={title}
-          company={place}
-          period={period}
-          desc={description}
-        />
-      ) : null
-    )
-  })
+    const {
+      typeQualification,
+      title,
+      place,
+      description,
+      dateInit,
+      dateEnd,
+      id,
+    } = item;
+    const period = `${dateInit} - ${dateEnd}`;
+    return !typeQualification ? (
+      <QualItem
+        key={id || i}
+        title={title}
+        company={place}
+        period={period}
+        desc={description}
+      />
+    ) : null;
+  });
   return (
     <div className="container-fluid py-5" id={sectionOpst.sectionName}>
       <div className="container">
@@ -68,7 +78,7 @@ const Qualification = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Qualification
+export default Qualification;
