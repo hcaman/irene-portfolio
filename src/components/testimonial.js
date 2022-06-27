@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTestimonialData } from '../hooks/useTestimonialData'
 import Titles from './ui/Titles'
-import { ClientReview, Carousel } from './ui/ClientReview'
+import { Carousel } from './ui/ClientReview'
 
 const Testimonial = () => {
   const { allDatoCmsTestimonial, allDatoCmsSectionsTitle } =
@@ -11,18 +11,6 @@ const Testimonial = () => {
     mainTitle: allDatoCmsSectionsTitle.nodes[0]?.mainTitle || 'Review',
     littleTitle: allDatoCmsSectionsTitle.nodes[0]?.littleTitle || 'Clients Say',
   }
-  const clientReviews = allDatoCmsTestimonial.nodes.map((item, i) => {
-    const { name, review, profession, image } = item
-    return (
-      <ClientReview
-        key={i}
-        name={name}
-        profession={profession}
-        review={review}
-        image={image}
-      />
-    )
-  })
   return (
     <div className="container-fluid py-5" id={sectionOpst.sectionName}>
       <div className="container">
@@ -32,7 +20,7 @@ const Testimonial = () => {
         />
         <div className="row justify-content-center">
           <div className="col-lg-8">
-            <Carousel clientReviews={clientReviews} />
+            <Carousel clientNodes={allDatoCmsTestimonial.nodes} />
           </div>
         </div>
       </div>
