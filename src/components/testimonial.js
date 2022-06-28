@@ -1,16 +1,19 @@
 import React from 'react';
 import { useTestimonialData } from '../hooks/useTestimonialData';
+import { useSectionTitles } from '../hooks/useSectionTitles';
 import Titles from './ui/Titles';
 import { Carousel } from './ui/ClientReview';
 
 const Testimonial = () => {
   const { allDatoCmsTestimonial, allDatoCmsSectionsTitle } =
     useTestimonialData();
-  const sectionOpst = {
-    sectionName: JSON.parse(allDatoCmsSectionsTitle.nodes[0]?.section)[0],
-    mainTitle: allDatoCmsSectionsTitle.nodes[0]?.mainTitle || 'Review',
-    littleTitle: allDatoCmsSectionsTitle.nodes[0]?.littleTitle || 'Clients Say',
+  const defaultTitles = {
+    sectionD: 'testimonial',
+    mainTitleD: 'Review',
+    littleTitleD: 'Clients Say'
   };
+  const sectionOpst = useSectionTitles(allDatoCmsSectionsTitle.nodes, defaultTitles);
+  
   return (
     <div className="container-fluid py-5" id={sectionOpst.sectionName}>
       <div className="container">

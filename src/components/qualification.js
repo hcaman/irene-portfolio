@@ -1,18 +1,18 @@
 import React from 'react';
 import { useQualificationData } from '../hooks/useQualificationData';
+import { useSectionTitles } from '../hooks/useSectionTitles';
 import Titles from './ui/Titles';
 import QualItem from './ui/QualItem';
 
 const Qualification = () => {
   const { allDatoCmsQualificationItem, allDatoCmsSectionsTitle } =
     useQualificationData();
-  const sectionOpst = {
-    sectionName: JSON.parse(allDatoCmsSectionsTitle.nodes[0]?.section)[0],
-    mainTitle: allDatoCmsSectionsTitle.nodes[0]?.mainTitle || 'Quality',
-    littleTitle:
-      allDatoCmsSectionsTitle.nodes[0]?.littleTitle ||
-      'Education & Expericence',
+  const defaultTitles = {
+    sectionD: 'qualification',
+    mainTitleD: 'Quality',
+    littleTitleD: 'Education & Expericence'
   };
+  const sectionOpst = useSectionTitles(allDatoCmsSectionsTitle.nodes, defaultTitles);
   const educationCol = allDatoCmsQualificationItem.nodes.map((item, i) => {
     const {
       typeQualification,

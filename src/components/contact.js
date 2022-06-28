@@ -1,16 +1,18 @@
 import React from 'react';
 import { useContactData } from '../hooks/useContactData';
+import { useSectionTitles } from '../hooks/useSectionTitles';
 import Titles from './ui/Titles';
 import { InputForm, TextForm } from './ui/InputsForm';
 import { HelpBlock } from './ui/Separators';
 
 const Contact = () => {
   const { allDatoCmsSectionsTitle } = useContactData();
-  const sectionOpst = {
-    sectionName: JSON.parse(allDatoCmsSectionsTitle.nodes[0]?.section)[0],
-    mainTitle: allDatoCmsSectionsTitle.nodes[0]?.mainTitle || 'Contact',
-    littleTitle: allDatoCmsSectionsTitle.nodes[0]?.littleTitle || 'Contact Me',
+  const defaultTitles = {
+    sectionD: 'contact',
+    mainTitleD: 'Contact',
+    littleTitleD: 'Contact Me'
   };
+  const sectionOpst = useSectionTitles(allDatoCmsSectionsTitle.nodes, defaultTitles);
   return (
     <div className="container-fluid py-5" id={sectionOpst.sectionName}>
       <div className="container">

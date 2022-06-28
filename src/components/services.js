@@ -1,15 +1,18 @@
 import React from 'react';
 import { useServicesData } from '../hooks/useServicesData';
+import { useSectionTitles } from '../hooks/useSectionTitles';
 import Titles from './ui/Titles';
 import ServiceItem from './ui/ServiceItem';
 
 const Services = () => {
   const { allDatoCmsServiceItem, allDatoCmsSectionsTitle } = useServicesData();
-  const sectionOpst = {
-    sectionName: JSON.parse(allDatoCmsSectionsTitle.nodes[0]?.section)[0],
-    mainTitle: allDatoCmsSectionsTitle.nodes[0]?.mainTitle || 'Services',
-    littleTitle: allDatoCmsSectionsTitle.nodes[0]?.littleTitle || 'My Services',
+  const defaultTitles = {
+    sectionD: 'service',
+    mainTitleD: 'Services',
+    littleTitleD: 'My Services'
   };
+  const sectionOpst = useSectionTitles(allDatoCmsSectionsTitle.nodes, defaultTitles);
+  
   const seviceItems = allDatoCmsServiceItem.nodes.map((item, i) => {
     const { title, icon, description, iconsize, id } = item;
     const link = item?.link;

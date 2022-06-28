@@ -1,6 +1,7 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { useAboutData } from '../hooks/useAboutData';
+import { useSectionTitles } from '../hooks/useSectionTitles';
 import Titles from './ui/Titles';
 
 const TextSecondary = ({ item }) => {
@@ -26,15 +27,12 @@ const About = () => {
     image,
   } = datoCmsAbout;
   const itemsTextSec = itemsInformation.split(',\n');
-  const sectionOpst = {
-    sectionName: JSON.parse(allDatoCmsSectionsTitle.nodes[0]?.section)[0],
-    mainTitle:
-      allDatoCmsSectionsTitle.nodes[0]?.mainTitle || mainTitle || 'About',
-    littleTitle:
-      allDatoCmsSectionsTitle.nodes[0]?.littleTitle ||
-      littleTitle ||
-      'About Me',
+  const defaultTitles = {
+    sectionD: 'about',
+    mainTitleD: mainTitle || 'About',
+    littleTitleD: littleTitle || 'About Me'
   };
+  const sectionOpst = useSectionTitles(allDatoCmsSectionsTitle.nodes, defaultTitles);
   return (
     <div className="container-fluid py-5" id={sectionOpst.sectionName}>
       <div className="container">

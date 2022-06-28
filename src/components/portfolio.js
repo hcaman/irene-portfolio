@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePortfolioData } from '../hooks/usePortfolioData';
+import { useSectionTitles } from '../hooks/useSectionTitles';
 import Titles from './ui/Titles';
 import ProtfolioBox from './ui/ProtfolioBox';
 
@@ -13,12 +14,12 @@ const Portfolio = () => {
     allFilters.push(filter);
     return <ProtfolioBox key={id || i} image={image} filterName={filter} />;
   });
-  const sectionOpst = {
-    sectionName: JSON.parse(allDatoCmsSectionsTitle.nodes[0]?.section)[0],
-    mainTitle: allDatoCmsSectionsTitle.nodes[0]?.mainTitle || 'Gallery',
-    littleTitle:
-      allDatoCmsSectionsTitle.nodes[0]?.littleTitle || 'My Portfolio',
+  const defaultTitles = {
+    sectionD: 'portfolio',
+    mainTitleD: 'Gallery',
+    littleTitleD: 'My Portfolio'
   };
+  const sectionOpst = useSectionTitles(allDatoCmsSectionsTitle.nodes, defaultTitles);
   return (
     <div className="container-fluid pt-5 pb-3" id={sectionOpst.sectionName}>
       <div className="container">
