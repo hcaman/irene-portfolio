@@ -22,6 +22,7 @@ export const usePortfolioData = () => {
           littleTitle
           mainTitle
           originalId
+          showSection
         }
       }
     }

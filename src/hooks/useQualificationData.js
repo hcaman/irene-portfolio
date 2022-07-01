@@ -26,6 +26,7 @@ export const useQualificationData = () => {
           mainTitle
           id
           originalId
+          showSection
         }
       }
     }

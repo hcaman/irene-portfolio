@@ -23,6 +23,7 @@ export const useAboutData = () => {
           littleTitle
           mainTitle
           originalId
+          showSection
         }
       }
     }

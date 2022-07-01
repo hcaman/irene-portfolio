@@ -11,6 +11,7 @@ export const useContactData = () => {
           littleTitle
           mainTitle
           originalId
+          showSection
         }
       }
     }

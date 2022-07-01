@@ -20,6 +20,7 @@ export const useServicesData = () => {
           littleTitle
           mainTitle
           originalId
+          showSection
         }
       }
     }

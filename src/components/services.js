@@ -12,6 +12,11 @@ const Services = () => {
     littleTitleD: 'My Services'
   };
   const sectionOpst = useSectionTitles(allDatoCmsSectionsTitle.nodes, defaultTitles);
+
+  if (sectionOpst.showSection === false) {
+    return null;
+  }
+
   
   const seviceItems = allDatoCmsServiceItem.nodes.map((item, i) => {
     const { title, icon, description, iconsize, id } = item;

@@ -13,6 +13,11 @@ const Contact = () => {
     littleTitleD: 'Contact Me'
   };
   const sectionOpst = useSectionTitles(allDatoCmsSectionsTitle.nodes, defaultTitles);
+
+  if (sectionOpst.showSection === false) {
+    return null;
+  }
+
   return (
     <div className="container-fluid py-5" id={sectionOpst.sectionName}>
       <div className="container">

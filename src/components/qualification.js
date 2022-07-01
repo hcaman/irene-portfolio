@@ -13,6 +13,11 @@ const Qualification = () => {
     littleTitleD: 'Education & Expericence'
   };
   const sectionOpst = useSectionTitles(allDatoCmsSectionsTitle.nodes, defaultTitles);
+
+  if (sectionOpst.showSection === false) {
+    return null;
+  }
+
   const educationCol = allDatoCmsQualificationItem.nodes.map((item, i) => {
     const {
       typeQualification,

@@ -8,18 +8,23 @@ import ProtfolioBox from './ui/ProtfolioBox';
 
 const Portfolio = () => {
   const { allDatoCmsPortfolio, allDatoCmsSectionsTitle } = usePortfolioData();
-  const allFilters = [];
-  const portfolioElements = allDatoCmsPortfolio.nodes.map((item, i) => {
-    const { image, filter, id } = item;
-    allFilters.push(filter);
-    return <ProtfolioBox key={id || i} image={image} filterName={filter} />;
-  });
   const defaultTitles = {
     sectionD: 'portfolio',
     mainTitleD: 'Gallery',
     littleTitleD: 'My Portfolio'
   };
   const sectionOpst = useSectionTitles(allDatoCmsSectionsTitle.nodes, defaultTitles);
+
+  if (sectionOpst.showSection === false) {
+    return null;
+  }
+
+  const allFilters = [];
+  const portfolioElements = allDatoCmsPortfolio.nodes.map((item, i) => {
+    const { image, filter, id } = item;
+    allFilters.push(filter);
+    return <ProtfolioBox key={id || i} image={image} filterName={filter} />;
+  });
   return (
     <div className="container-fluid pt-5 pb-3" id={sectionOpst.sectionName}>
       <div className="container">
