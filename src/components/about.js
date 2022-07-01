@@ -26,7 +26,7 @@ const About = () => {
     description,
     image,
   } = datoCmsAbout;
-  const itemsTextSec = itemsInformation.split(',\n');
+  const itemsTextSec = itemsInformation ? itemsInformation.split(',\n') : [];
   const defaultTitles = {
     sectionD: 'about',
     mainTitleD: mainTitle || 'About',
@@ -57,9 +57,13 @@ const About = () => {
             <h3 className="mb-4">{subtitle}</h3>
             <p>{description}</p>
             <div className="row mb-3">
-              {itemsTextSec.map((item, i) => (
-                <TextSecondary key={i} item={item} />
-              ))}
+              {
+              itemsTextSec.length ?
+                itemsTextSec.map((item, i) => (
+                  <TextSecondary key={i} item={item} />
+                ))
+              : null
+              }
             </div>
             <a href="/#" className="btn btn-outline-primary mr-4">
               Hire Me
