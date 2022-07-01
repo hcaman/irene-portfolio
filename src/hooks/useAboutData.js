@@ -9,6 +9,7 @@ export const useAboutData = () => {
         littleTitle
         itemsInformation
         subtitle
+        buttons
         image {
           gatsbyImageData
           alt

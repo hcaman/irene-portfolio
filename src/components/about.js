@@ -16,6 +16,18 @@ const TextSecondary = ({ item }) => {
   );
 };
 
+const BtnElement = ({ item, isLast }) => {
+  if (item.show) {
+    return (
+      <a href={item.link} className={`btn btn-outline-primary ${!isLast ? 'mr-4' : ''}`}>
+        {item.text}
+      </a>
+    );
+  } else {
+    return null
+  }
+};
+
 const About = () => {
   const { datoCmsAbout, allDatoCmsSectionsTitle } = useAboutData();
   const {
@@ -25,7 +37,10 @@ const About = () => {
     itemsInformation,
     description,
     image,
+    buttons,
   } = datoCmsAbout;
+  const btnElements = buttons ? JSON.parse(buttons)?.btn || [] : [] ;
+  console.log(btnElements);
   const itemsTextSec = itemsInformation ? itemsInformation.split(',\n') : [];
   const defaultTitles = {
     sectionD: 'about',
@@ -58,19 +73,20 @@ const About = () => {
             <p>{description}</p>
             <div className="row mb-3">
               {
-              itemsTextSec.length ?
-                itemsTextSec.map((item, i) => (
-                  <TextSecondary key={i} item={item} />
-                ))
-              : null
+                itemsTextSec.length ?
+                  itemsTextSec.map((item, i) => (
+                    <TextSecondary key={i} item={item} />
+                  ))
+                : null
               }
             </div>
-            <a href="/#" className="btn btn-outline-primary mr-4">
-              Hire Me
-            </a>
-            <a href="/#" className="btn btn-outline-primary">
-              Learn More
-            </a>
+              {
+                btnElements.length ?
+                  btnElements.map((item, i) => (
+                    <BtnElement key={i} item={item} isLast={i+1 === btnElements.length} />
+                  ))
+                : null
+              }
           </div>
         </div>
       </div>
